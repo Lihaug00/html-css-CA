@@ -149,18 +149,3 @@
     height: auto;
     margin-top: 1rem;
   }
-  
-  @media (max-width: 768px) {
-    .order-container {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .order-details, .delivery-details {
-      margin: 1rem 0;
-    }
-  
-    .delivery-details img {
-      margin: 1rem auto 0;
-    }
-  }
