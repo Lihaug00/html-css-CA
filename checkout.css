@@ -177,3 +177,19 @@
   .go-back:hover {
     text-decoration: underline;
   }
+  
+  @media (max-width: 768px) {
+    .payment-info, .personal-info {
+      flex: 1 1 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .about-container {
+      padding: 1rem;
+    }
+  
+    .contact-form {
+      padding: 1rem;
+    }
+  }

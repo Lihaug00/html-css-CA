@@ -205,3 +205,27 @@
   .go-back:hover {
     text-decoration: underline;
   }
+
+.remove-from-cart-btn {
+  background: #e60000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 1rem;
+}
+.remove-from-cart-btn:hover {
+  background: #ff3333;
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 1rem;
+  }
+
+  .contact.form {
+    padding: 1rem;
+  }
+}

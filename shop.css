@@ -179,3 +179,13 @@
   .contact-button:hover {
     background: #ff9b33;
   }
+  
+  @media (max-width: 480px) {
+    .about-container {
+      padding: 1rem;
+    }
+  
+    .contact-form {
+      padding: 1rem;
+    }
+  }
