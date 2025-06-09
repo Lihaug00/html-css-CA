@@ -1,90 +1,58 @@
-window.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.querySelector('.search-bar input');
-    const productCards = document.querySelectorAll('.product-card');
-  
-    searchInput.addEventListener('input', () => {
-      const searchTerm = searchInput.value.toLowerCase();
-      productCards.forEach(card => {
-        const productName = card.querySelector('h2').textContent.toLowerCase();
-        if (productName.includes(searchTerm)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
+const API_BASE = "https://v2.api.noroff.dev";
+const productGrid = document.querySelector(".product-grid");
+const genderFilter = document.getElementById("genderFilter");
+const categoryFilter = document.getElementById("categoryFilter");
 
-    const loadingIndicator = document.createElement('div');
-    loadingIndicator.classList.add('loading-indicator');
-    loadingIndicator.textContent = 'Loading...';
-    document.body.appendChild(loadingIndicator);
+let allProducts = [];
 
-    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-    let cartCount = 0;
-    const cartButton = document.querySelector('.cart-button');
+async function fetchProducts() {
+  productGrid.innerHTML = "<p>Loading products...</p>";
+  try {
+    const res = await fetch(`${API_BASE}/rainy-days`);
+    if (!res.ok) throw new Error("Failed to fetch products");
+    const result = await res.json();
+    allProducts = result.data;
+    renderProducts(allProducts);
+  } catch (error) {
+    productGrid.innerHTML = `<p>Error loading products: ${error.message}</p>`;
+  }
+}
 
-    addToCartButtons.forEach(button => {
-     button.addEventListener('click', () => {
-      cartCount++;
-      updateCartCount();
-      alert('Item added to cart!');
-      });
-    });
+function renderProducts(products) {
+  productGrid.innerHTML = "";
+  if (products.length === 0) {
+    productGrid.innerHTML = "<p>No products match your filters.</p>";
+    return;
+  }
 
-    function updateCartCount() {
-      cartButton.textContent = `Cart (${cartCount})`;
-    }
+  products.forEach(product => {
+    const card = document.createElement("a");
+    card.className = "product-card";
+    card.href = `product.html?id=${product.id}`;
+    card.innerHTML = `
+      <img src="${product.image.url}" alt="${product.image.alt}" />
+      <h2>${product.title}</h2>
+      <p>${product.description}</p>
+      <p class="price">$${product.discountedPrice ?? product.price}</p>
+    `;
+    productGrid.appendChild(card);
+  });
+}
 
-    const navButtons = document.querySelectorAll('.nav-button');
+function applyFilters() {
+  const selectedGender = genderFilter.value;
+  const selectedCategory = categoryFilter.value;
 
-    navButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = button.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-    
-    const removeFromCartButtons = document.querySelectorAll('.remove-from-cart-btn');
-
-    removeFromCartButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const cartItem = button.closest('.cart-items');
-        if (cartItem) {
-        cartItem.remove();
-        cartCount--;
-        if (cartCount < 0) cartCount = 0;
-        updateCartCount();
-        alert('Item removed from cart!');
-      }
-    });
+  const filtered = allProducts.filter(product => {
+    const genderMatch = !selectedGender || product.gender?.toLowerCase() === selectedGender;
+    const categoryMatch = !selectedCategory || product.tags?.includes(selectedCategory);
+    return genderMatch && categoryMatch;
   });
 
-    const quantityButtons = document.querySelectorAll('.quantity-controls');
+  renderProducts(filtered);
+}
 
-  quantityButtons.forEach(control => {
-    const minusButton = control.querySelector('.quantity-btn.minus');
-    const plusButton = control.querySelector('.quantity-btn.plus');
-    const quantityDisplay = control.querySelector('.quantity-value');
-    let quantity = parseInt(quantityDisplay.textContent);
+genderFilter.addEventListener("change", applyFilters);
+categoryFilter.addEventListener("change", applyFilters);
 
-    minusButton.addEventListener('click', () => {
-      if (quantity > 1) {
-        quantity--;
-        quantityDisplay.textContent = quantity;
-      }
-    });
-
-    plusButton.addEventListener('click', () => {
-      quantity++;
-      quantityDisplay.textContent = quantity;
-    });
-  });
-});
+fetchProducts();

@@ -29,48 +29,79 @@
   <main>
     <div class="checkout-container">
       <h1>Payment details & information</h1>
-      <form action="confirmation.html" method="POST">
-        <div class="payment-info">
-          <label for="card-number">Credit card number</label>
-          <input type="text" id="card-number" name="card-number" placeholder="1111-2222-3333-4444" required>
-          
-          <label for="expiry-date">Expiry date</label>
-          <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
-          
-          <label for="cvc">CVC</label>
-          <input type="text" id="cvc" name="cvc" placeholder="***" required>
-          
-          <label for="card-holder">Card holder</label>
-          <input type="text" id="card-holder" name="card-holder" placeholder="Jane Doe" required>
+      <section class="checkout-summary">
+        <h2>Your cart</h2>
+        <div id="summary-items"></div>
+      </section>
+      <form id="checkout-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Credit card number</label>
+            <input type="text" placeholder="1111-2222-3333-4444" />
+          </div>
+          <div class="form-group">
+            <label>First name</label>
+            <input type="text" />
+          </div>
         </div>
-        <div class="personal-info">
-          <label for="first-name">First name</label>
-          <input type="text" id="first-name" name="first-name" required>
-          
-          <label for="last-name">Last name</label>
-          <input type="text" id="last-name" name="last-name" required>
-          
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-          
-          <label for="post-code">Post code</label>
-          <input type="text" id="post-code" name="post-code" required>
-          
-          <label for="street-address">St. name & number</label>
-          <input type="text" id="street-address" name="street-address" required>
-          
-          <label for="city">City</label>
-          <input type="text" id="city" name="city" required>
-          
-          <label for="phone-number">Phone number</label>
-          <input type="text" id="phone-number" name="phone-number" required>
-          
-          <label for="company-name">Company name</label>
-          <input type="text" id="company-name" name="company-name">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Expiry date</label>
+            <input type="text" placeholder="MM/YY" />
+          </div>
+          <div class="form-group">
+            <label>Last name</label>
+            <input type="text" />
+          </div>
         </div>
-        <div class="checkout-actions">
-          <a href="order.html" class="checkout-btn">CHECKOUT</a>
-          <a href="cart.html" class="go-back">Back to cart</a>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>CVC</label>
+            <input type="text" placeholder="***" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Card holder</label>
+            <input type="text" placeholder="Jane Doe" />
+          </div>
+          <div class="form-group">
+            <label>Post code</label>
+            <input type="text" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>St. name & number</label>
+            <input type="text" />
+          </div>
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone number</label>
+            <input type="tel" />
+          </div>
+          <div class="form-group">
+            <label>Company name</label>
+            <input type="text" />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="checkout-btn" id="checkout-btn">CHECKOUT</button>
         </div>
       </form>
     </div>
@@ -78,6 +109,6 @@
   <footer>
     <p>&copy; 2024 RainyDays</p>
   </footer>
-  <script src="shop.js" defer></script>
+  <script src="checkout.js" defer></script>
 </body>
 </html>

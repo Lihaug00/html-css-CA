@@ -179,6 +179,43 @@
   .contact-button:hover {
     background: #ff9b33;
   }
+
+  .filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .filter-select {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 2px solid #0a3641;
+    background-color: white;
+    color: #0a3641;
+    cursor: pointer;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  
+  .filter-select:hover {
+    border-color: #ff7b00;
+    color: #ff7b00;
+  }
+
+  .filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .filter-container select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
   
   @media (max-width: 480px) {
     .about-container {

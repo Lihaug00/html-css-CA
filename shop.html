@@ -28,57 +28,40 @@
   </header>
   <main>
     <h1>Welcome to our store</h1>
+    <div class="filters">
+      <label for="genderFilter">Filter by Gender:</label>
+      <select id="genderFilter">
+        <option value="">All</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="unisex">Unisex</option>
+      </select>
+    
+      <label for="categoryFilter">Filter by Category:</label>
+      <select id="categoryFilter">
+        <option value="">All</option>
+        <option value="adventure">Adventure</option>
+        <option value="city">City</option>
+        <option value="explorer">Explorer</option>
+        <option value="fashion">Fashion</option>
+        <option value="hiking">Hiking</option>
+        <option value="outdoor">Outdoor</option>
+        <option value="rain">Rain</option>
+        <option value="waterproof">Waterproof</option>
+      </select>
+    </div>
     <div class="product-grid">
-        <a href="product.html" class="product-card">
-        <img src="https://github.com/NoroffFEU/first-year-cross-course-assignment-brief-one/blob/master/assets/RainyDays_Jacket1.jpg?raw=true">
-        <h2>Reinforced Adventure Jacket</h2>
-        <p>Sturdy and comfortable. Reinforced for the ultimate adventure.</p>
-        <p class="price">$245.00</p>
-        </a>
-        <a href="product.html" class="product-card">
-        <img src="https://github.com/NoroffFEU/first-year-cross-course-assignment-brief-one/blob/master/assets/RainyDays_Jacket2.jpg?raw=true">
-        <h2>Lightweight Training Jacket</h2>
-        <p>Perfect for training and daily wear. Breathable and lightweight.</p>
-        <p class="price">$140.00</p>
-        </a>
-        <a href="product.html" class="product-card">
-        <img src="https://github.com/NoroffFEU/first-year-cross-course-assignment-brief-one/blob/master/assets/RainyDays_Jacket3.jpg?raw=true">
-        <h2>Softshell Running Jacket</h2>
-        <p>Windproof and lightweight. Great for running in any weather.</p>
-        <p class="price">$125.00</p>
-        </a>
-        <a href="product.html" class="product-card">
-        <img src="https://github.com/NoroffFEU/first-year-cross-course-assignment-brief-one/blob/master/assets/RainyDays_Jacket4.jpg?raw=true">
-        <h2>All-Weather Explorer Jacket</h2>
-        <p>Designed for all weather conditions. Waterproof and windproof.</p>
-        <p class="price">$199.00</p>
-        </a>
-        <a href="product.html" class="product-card">
-        <img src="https://github.com/NoroffFEU/first-year-cross-course-assignment-brief-one/blob/master/assets/RainyDays_Jacket5.jpg?raw=true">
-        <h2>Windproof Hiking Jacket</h2>
-        <p>Durable and comfortable. Perfect for windy hiking trails.</p>
-        <p class="price">$170.00</p>
-        </a>
-        <a href="product.html" class="product-card">
-        <img src="https://github.com/NoroffFEU/first-year-cross-course-assignment-brief-one/blob/master/assets/RainyDays_Jacket6.jpg?raw=true">
-        <h2>Waterproof Trekking Jacket</h2>
-        <p>Waterproof and breathable. Ideal for long trekking adventures.</p>
-        <p class="price">$250.00</p>
-        </a>
-        <a href="product.html" class="product-card">
-        <img src="https://github.com/NoroffFEU/first-year-cross-course-assignment-brief-one/blob/master/assets/RainyDays_Jacket7.jpg?raw=true">
-        <h2>Midweight Fleece Jacket</h2>
-        <p>Warm and cozy. Great for cool autumn days.</p>
-        <p class="price">$85.00</p>
-        </a>
-      </div>
+    </div>
+
     <div class="contact-button-container">
       <a href="contact.html" class="contact-button">Contact Us</a>
     </div>
   </main>
+
   <footer>
     <p>&copy; 2024 RainyDays</p>
   </footer>
-  <script src="shop.js" defer></script>
+
+  <script type="module" src="shop.js"></script>
 </body>
 </html>
