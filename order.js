@@ -22,7 +22,7 @@ function getOrder() {
   
       return `
         <div class="order-item">
-          <span>${item.title} × ${item.quantity}</span>
+          <span>${item.title} &times; ${item.quantity}</span>
           <span>$${subTotal.toFixed(2)}</span>
         </div>
       `;
