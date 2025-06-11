@@ -1,7 +1,6 @@
 const API_BASE = "https://v2.api.noroff.dev";
 const productGrid = document.querySelector(".product-grid");
 const genderFilter = document.getElementById("genderFilter");
-const categoryFilter = document.getElementById("categoryFilter");
 
 let allProducts = [];
 
@@ -41,18 +40,14 @@ function renderProducts(products) {
 
 function applyFilters() {
   const selectedGender = genderFilter.value;
-  const selectedCategory = categoryFilter.value;
 
   const filtered = allProducts.filter(product => {
-    const genderMatch = !selectedGender || product.gender?.toLowerCase() === selectedGender;
-    const categoryMatch = !selectedCategory || product.tags?.includes(selectedCategory);
-    return genderMatch && categoryMatch;
+    return !selectedGender || product.gender?.toLowerCase() === selectedGender;
   });
 
   renderProducts(filtered);
 }
 
 genderFilter.addEventListener("change", applyFilters);
-categoryFilter.addEventListener("change", applyFilters);
 
 fetchProducts();
